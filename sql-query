@@ -1,0 +1,44 @@
+1. Below query for demo purpose it will run on online editor
+
+SELECT * FROM [Orders] Natural Join Customers where CustomerName="Bon app'" Order By OrderDate Desc limit 2
+
+OrderID	 CustomerID	 EmployeeID	   OrderDate	  ShipperID	  CustomerName	 ContactName	              Address	             City	     PostalCode	  Country
+10362		   9		       3			      1996-11-25	  1     	  Bon app'	    Laurence Lebihans	    12, rue des Bouchers	   Marseille	    13008	      France
+10340	  	 9	         1			      1996-10-29	  3	        Bon app'	    Laurence Lebihans	    12, rue des Bouchers	   Marseille	    13008	      France
+
+
+
+2.The below query is for  Get list of Posts with latest 10 comments of each post authored by 'James Bond'
+
+SELECT * FROM [Post] Natural Join Comment where Name="James Bond" Order By OrderDate Desc limit 10
+
+
+
+Question:
+Write a query given the following data model:
+Query: Get list of Posts with latest 10 comments of each post authored by 'James Bond'
+
+create table author (
+id int primary key,
+name varchar2(100)
+)
+
+create table post(
+id int primary key,
+name varchar2(100),
+authorid int foreign key references id of table author
+createdts datetime
+)
+
+create table comment (
+id int primary key,
+content varchar2(1000),
+postid int foreign key references id of table post
+createdts datetime
+userid int foreign key references id of table user
+)
+
+create table user (
+id int primary key,
+name varchar2(100)
+)
